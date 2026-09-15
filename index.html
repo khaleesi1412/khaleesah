@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Khaleesah Pixels creates intimate, expressive portraits and photographs with feeling." />
+  <title>KHALEESAH PIXELS — Photography With Feeling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #130A28;
+      --plum: #1E1240;
+      --lilac: #A78BFA;
+      --cream: #FFFBF5;
+      --gold: #D6C7A8;
+      --muted: rgba(255, 251, 245, .62);
+      --line: rgba(214, 199, 168, .24);
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .site-nav {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(calc(100% - 64px), var(--max));
+      padding: 28px 0;
+      transform: translateX(-50%);
+      border-bottom: 1px solid rgba(255, 251, 245, .16);
+      animation: rise-in .9s ease both;
+    }
+    .brand {
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      letter-spacing: .16em;
+    }
+    .nav-links { display: flex; gap: 30px; color: var(--muted); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .nav-links a { transition: color .25s ease; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-contact { color: var(--gold); }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      overflow: hidden;
+      text-align: center;
+      background: radial-gradient(circle at 50% 35%, #36226a 0%, var(--plum) 33%, var(--ink) 74%);
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      opacity: .28;
+      background-image: linear-gradient(rgba(255, 251, 245, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 251, 245, .04) 1px, transparent 1px);
+      background-size: 74px 74px;
+      content: "";
+      mask-image: radial-gradient(circle, black, transparent 72%);
+    }
+    .hero-inner { position: relative; z-index: 1; width: min(850px, calc(100% - 40px)); padding-top: 72px; }
+    .eyebrow, .section-label { color: var(--lilac); font-size: 10px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
+    .hero h1 {
+      max-width: 820px;
+      margin: 22px auto 20px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 8.2vw, 112px);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .98;
+      animation: rise-in 1s .12s ease both;
+    }
+    .hero-copy { max-width: 380px; margin: 0 auto 34px; color: var(--muted); font-size: 14px; animation: rise-in 1s .25s ease both; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      border: 1px solid var(--gold);
+      color: var(--cream);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: background .25s ease, color .25s ease, transform .25s ease;
+      animation: rise-in 1s .38s ease both;
+    }
+    .button::after { content: "->"; color: var(--gold); font-size: 14px; transition: transform .25s ease; }
+    .button:hover { background: var(--gold); color: var(--ink); transform: translateY(-3px); }
+    .button:hover::after { color: var(--ink); transform: translateX(4px); }
+    .scroll-note { position: absolute; bottom: 28px; left: 50%; color: var(--muted); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; transform: translateX(-50%); }
+    .scroll-note::before { display: inline-block; width: 28px; height: 1px; margin: 0 12px 3px 0; background: var(--gold); content: ""; }
+
+    .section { padding: 150px 32px; }
+    .section-inner { width: min(100%, var(--max)); margin: 0 auto; }
+    .approach { background: var(--plum); }
+    .approach-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+    .approach h2 { max-width: 820px; margin: -10px 0 0; color: var(--cream); font-family: "Playfair Display", serif; font-size: clamp(42px, 6vw, 82px); font-weight: 400; letter-spacing: -.04em; line-height: 1.08; }
+    .approach h2 em { color: var(--lilac); }
+    .approach-note { max-width: 230px; margin-top: 40px; color: var(--muted); font-size: 12px; }
+
+    .portfolio { background: var(--ink); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 52px; border-bottom: 1px solid var(--line); padding-bottom: 21px; }
+    .section-heading h2 { margin: 10px 0 0; font-family: "Playfair Display", serif; font-size: clamp(42px, 5.5vw, 74px); font-weight: 400; letter-spacing: -.04em; line-height: 1; }
+    .section-heading p { max-width: 220px; margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .project { position: relative; overflow: hidden; }
+    .project img { height: 560px; transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease; }
+    .project:nth-child(2) { margin-top: 110px; }
+    .project:nth-child(3) { margin-top: -75px; }
+    .project:nth-child(4) { margin-top: 35px; }
+    .project:hover img { filter: saturate(1.08); transform: scale(1.04); }
+    .project-info { display: flex; align-items: center; justify-content: space-between; padding: 15px 0 0; }
+    .project-title { font-family: "Playfair Display", serif; font-size: 20px; }
+    .project-type { color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+
+    .behind-camera { background: var(--plum); }
+    .behind-camera-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); gap: 80px; align-items: center; }
+    .behind-camera-image { height: 600px; }
+    .behind-camera-copy h2 { max-width: 540px; margin: 20px 0 24px; font-family: "Playfair Display", serif; font-size: clamp(44px, 5.5vw, 76px); font-weight: 400; letter-spacing: -.045em; line-height: 1; }
+    .behind-camera-copy p { max-width: 340px; color: var(--muted); }
+
+    .contact { background: var(--plum); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+    .contact h2 { max-width: 520px; margin: 22px 0 28px; font-family: "Playfair Display", serif; font-size: clamp(48px, 6vw, 82px); font-weight: 400; letter-spacing: -.045em; line-height: .98; }
+    .contact-copy { max-width: 300px; color: var(--muted); }
+    .contact-email { display: inline-block; margin-top: 56px; border-bottom: 1px solid var(--gold); color: var(--gold); font-family: "Playfair Display", serif; font-size: 20px; }
+    .contact-form { display: grid; gap: 28px; padding-top: 20px; }
+    .field { position: relative; }
+    .field label { display: block; margin-bottom: 10px; color: var(--muted); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .field input, .field textarea { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid var(--line); outline: 0; background: transparent; color: var(--cream); resize: vertical; transition: border-color .25s ease; }
+    .field textarea { min-height: 92px; }
+    .field input:focus, .field textarea:focus { border-color: var(--lilac); }
+    .form-button { justify-self: start; margin-top: 8px; border: 0; background: none; cursor: pointer; }
+    .form-status { min-height: 20px; margin: -10px 0 0; color: var(--gold); font-size: 12px; }
+
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 32px; background: var(--ink); color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    footer span:last-child { color: var(--gold); }
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 700px) {
+      .site-nav { width: calc(100% - 40px); padding: 22px 0; }
+      .nav-links { gap: 14px; font-size: 9px; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .hero-inner { padding-top: 45px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 74px); }
+      .section { padding: 92px 20px; }
+      .approach-inner, .contact-grid, .behind-camera-grid { grid-template-columns: 1fr; gap: 36px; }
+      .approach-note { margin-top: 0; }
+      .section-heading { display: block; margin-bottom: 34px; }
+      .section-heading p { margin-top: 20px; text-align: left; }
+      .portfolio-grid { grid-template-columns: 1fr; gap: 42px; }
+      .project:nth-child(n) { margin-top: 0; }
+      .project img { height: 440px; }
+      .behind-camera-image { height: 440px; }
+      .contact-email { margin-top: 30px; }
+      .contact-form { padding-top: 0; }
+      footer { padding: 22px 20px; font-size: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="brand" href="#top" aria-label="Khaleesah Pixels home">KHALEESAH PIXELS</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#approach">Approach</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#behind-camera">Behind the camera</a>
+      <a class="nav-contact" href="#contact">Let's talk</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="eyebrow">Photography with feeling</div>
+        <h1 id="hero-title">Your story deserves more than a photograph.</h1>
+        <p class="hero-copy">Honest, intimate imagery for the people, places and seasons you want to remember exactly as they felt.</p>
+        <a class="button" href="#portfolio">Explore my work</a>
+      </div>
+      <div class="scroll-note">Scroll to wander</div>
+    </section>
+
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="section-inner approach-inner" data-reveal>
+        <div>
+          <div class="section-label">My approach</div>
+          <p class="approach-note">A little direction, a lot of room to be yourself. The best frames are usually the ones no one planned.</p>
+        </div>
+        <h2 id="approach-title">Natural enough to feel real. <em>Bold enough to be remembered.</em></h2>
+      </div>
+    </section>
+
+    <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="section-inner">
+        <div class="section-heading" data-reveal>
+          <div>
+            <div class="section-label">Selected work</div>
+            <h2 id="portfolio-title">Stories in frames.</h2>
+          </div>
+          <p>A visual diary of salt air, warm light and the people who make a moment matter.</p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="project" data-reveal>
+            <img src="images/photo1.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">First Light</span><span class="project-type">Portraits</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo2.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Tide &amp; Tenderness</span><span class="project-type">Portraits</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo3.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">The In-Between</span><span class="project-type">Editorial</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo4.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Soft Focus</span><span class="project-type">Editorial</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo5.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Golden Hour</span><span class="project-type">Lifestyle</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo6.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Days Like This</span><span class="project-type">Lifestyle</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo7.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">A Quiet Kind</span><span class="project-type">Portraits</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo8.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Open Water</span><span class="project-type">Personal work</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo9.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Where Light Lands</span><span class="project-type">Personal work</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo10.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Unscripted</span><span class="project-type">Portraits</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo11.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">The Long Way Home</span><span class="project-type">Lifestyle</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo12.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Between Seasons</span><span class="project-type">Editorial</span></div>
+          </article>
+          <article class="project" data-reveal>
+            <img src="images/photo13.jpg" alt="Portrait from the Khaleesah Pixels photography collection" loading="lazy" />
+            <div class="project-info"><span class="project-title">Stay Awhile</span><span class="project-type">Personal work</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section behind-camera" id="behind-camera" aria-labelledby="behind-camera-title">
+      <div class="section-inner behind-camera-grid" data-reveal>
+        <img class="behind-camera-image" src="images/photo14.jpg" alt="Khaleesah behind the camera" loading="lazy" />
+        <div class="behind-camera-copy">
+          <div class="section-label">Behind the camera</div>
+          <h2 id="behind-camera-title">The feeling starts before the shutter.</h2>
+          <p>Every session is a collaboration: a little curiosity, an open heart, and enough room for the unexpected to become the frame you keep.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner contact-grid">
+        <div data-reveal>
+          <div class="section-label">Have a feeling?</div>
+          <h2 id="contact-title">Let's create something unforgettable.</h2>
+          <p class="contact-copy">Tell me what you are dreaming up, where it is happening and what you want to feel when you look back.</p>
+          <a class="contact-email" href="mailto:hello@khaleesahpixels.com">hello@khaleesahpixels.com</a>
+        </div>
+        <form class="contact-form" id="contact-form" data-reveal>
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required /></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="message">Tell me a little more</label><textarea id="message" name="message" required></textarea></div>
+          <button class="button form-button" type="submit">Send an inquiry</button>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© 2025 Khaleesah Pixels</span><span>Made with feeling</span></footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const contactForm = document.querySelector('#contact-form');
+    const formStatus = document.querySelector('#form-status');
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      formStatus.textContent = 'Thank you. I will be in touch soon.';
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
